@@ -4,15 +4,15 @@ import "fmt"
 
 func main() {
 	/*
-		map c#taki dictionary gibidir iki şekilde tanımlanır.
+		map c#taki dictionary gibidir üç şekilde tanımlanır.
 	*/
 	//1
 	var myMap map[string]int = make(map[string]int)
-	myMap["first"]=1
-	myMap["second"]=2
+	myMap["first"] = 1
+	myMap["second"] = 2
 	//2
 	secondMap := make(map[string]int)
-	secondMap["1"]=11
+	secondMap["1"] = 11
 	fmt.Println(myMap, secondMap)
 
 	/*
@@ -26,16 +26,16 @@ func main() {
 	//myValue,ok := myMap["first5"]
 	//fmt.Println(ok, myValue)
 	//alttaki ornek: ok true ise dogru atama yapılmıstır ve terminale output verir
-	if myValue,ok := myMap["first"]; ok==true{
-		fmt.Println( myValue)
+	if myValue, ok := myMap["first"]; ok == true {
+		fmt.Println(myValue)
 	}
 	//3
-	thirdMap := map[string]int {
-		"first":11,
-		"second":22,
+	thirdMap := map[string]int{
+		"first":  11,
+		"second": 22,
 	}
 	fmt.Println(thirdMap)
 	//mapten item silme
-	delete(thirdMap,"second")
+	delete(thirdMap, "second")
 	fmt.Println(thirdMap)
 }
