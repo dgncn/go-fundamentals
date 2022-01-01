@@ -2,6 +2,11 @@ package main
 
 import "fmt"
 
+type animal struct {
+	FootCount int
+	TypeName  string
+}
+
 func main() {
 	/*
 		map c#taki dictionary gibidir üç şekilde tanımlanır.
@@ -38,4 +43,11 @@ func main() {
 	//mapten item silme
 	delete(thirdMap, "second")
 	fmt.Println(thirdMap)
+	fmt.Println("-----------------------")
+
+	dog := animal{
+		FootCount: 2,
+		TypeName:  "Karabaş",
+	}
+	fmt.Println(dog.TypeName)
 }
