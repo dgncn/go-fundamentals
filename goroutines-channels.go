@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 func main() {
@@ -33,21 +32,36 @@ func main() {
 	<-quitSignal2
 
 	//3
-	ic := make(chan int)
-	fmt.Println("test11")
-	go printFor(ic)
-	fmt.Println("test12")
+	// unbuffered channel
+	/*
+		ic := make(chan int)
+		fmt.Println("test11")
+		go printFor(ic)
+		fmt.Println("test12")
 
-	//channeldan alınan değerlerin iterasyonu için kullanılan for-range döngüsü.
-	for icitem := range ic {
-		fmt.Println("test1i")
+		//channeldan alınan değerlerin iterasyonu için kullanılan for-range döngüsü.
+		for icitem := range ic {
+			fmt.Println("test1i")
 
-		fmt.Println(icitem)
+			fmt.Println(icitem)
+		}
+		fmt.Println("test13")
+	*/
+	fmt.Println("=============== buffered channel ====================")
+	icBuffered := make(chan int, 3)
+
+	icBuffered <- 1
+	icBuffered <- 2
+	icBuffered <- 3
+
+	close(icBuffered)
+	for ix := range icBuffered {
+		fmt.Println(ix)
 	}
-	fmt.Println("test13")
 
 }
 
+/*
 func printFor(ic chan int) {
 	i := 0
 	for i < 4 {
@@ -57,6 +71,7 @@ func printFor(ic chan int) {
 	}
 	close(ic)
 }
+*/
 
 func SayHiFromGoroutine(quitSignal chan bool) {
 	fmt.Println("hi from goroutine")
